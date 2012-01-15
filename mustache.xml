@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!--
+	jEdit edit mode for mustache logic-less template language found at http://mustache.github.com/
+
+	Since mustache is not limited to HTML, this mode does not assume that the template is HTML.
+	The literal parts of the template are left plain and only the mustache tags are highlighted.
+
+	catalog line:
+	<MODE NAME="mustache" FILE="mustache.xml" FILE_NAME_GLOB="*.mustache{,.*}" />
+	-->
+
+<MODE>
+	<RULES IGNORE_CASE="FALSE" HIGHLIGHT_DIGITS="FALSE" DIGIT_RE="[0-9]+" NO_WORD_SEP="_.">
+
+		<SPAN TYPE="LITERAL2"> <BEGIN>{{{</BEGIN> <END>}}}</END> </SPAN>
+		<SPAN TYPE="LITERAL2"> <BEGIN>{{&amp;</BEGIN> <END>}}</END> </SPAN>
+
+		<SPAN TYPE="COMMENT1"> <BEGIN>{{!</BEGIN> <END>}}</END> </SPAN>
+
+		<SPAN TYPE="KEYWORD1"> <BEGIN>{{#</BEGIN> <END>}}</END> </SPAN>
+		<SPAN TYPE="KEYWORD1"> <BEGIN>{{^</BEGIN> <END>}}</END> </SPAN>
+		<SPAN TYPE="KEYWORD1"> <BEGIN>{{/</BEGIN> <END>}}</END> </SPAN>
+
+		<SPAN TYPE="MARKUP"> <BEGIN>{{&gt;</BEGIN> <END>}}</END> </SPAN>
+
+		<!-- NOTE:
+			we can highlight a tag change, but won't be able to
+			correctly highlight anything after in the new tags -->
+		<SPAN TYPE="KEYWORD4"> <BEGIN>{{=</BEGIN> <END>=}}</END> </SPAN>
+
+		<SPAN TYPE="LITERAL1"> <BEGIN>{{</BEGIN> <END>}}</END> </SPAN>
+	</RULES>
+</MODE>
+
